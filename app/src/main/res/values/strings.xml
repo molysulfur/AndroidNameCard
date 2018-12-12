@@ -2,4 +2,8 @@
     <string name="app_name">Android Name Card</string>
     <string name="hint_username">Username</string>
     <string name="btn_save">Save</string>
+
+    <!--nav side bar-->
+    <string name="my_card">My card</string>
+    <string name="list_card">List card</string>
 </resources>
