@@ -37,6 +37,7 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$LifeCycleVersion"
     // firebase
     implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
 
 }
