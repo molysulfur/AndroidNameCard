@@ -75,7 +75,7 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{()-> viewModel.save()}"
+                android:onClick="save"
                 style="@style/EditTextProfile"
                 android:text="@string/btn_save"
                 app:layout_constraintEnd_toEndOf="parent"
