@@ -21,6 +21,9 @@ public class ProfileActivity extends AppCompatActivity {
         initInstances();
     }
 
+    public void onSubmit(){
+    }
+
     private void initInstances() {
         profileViewModel = new ProfileViewModel();
         profileBinding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
@@ -34,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void setImageUrl() {
         try{
             Glide.with(this)
-                    .load(profileViewModel.users.get().imageUrl)
+                    .load(profileViewModel.imageUrl.get())
                     .into((ImageView) findViewById(R.id.img_profile));
         }catch (NullPointerException e){
             Log.e("Set Image Profile", "You don't set profile in google");

@@ -5,7 +5,6 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.navadon.androidnamecard.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,18 +16,22 @@ import java.util.Map;
 public class ProfileViewModel extends ViewModel {
 
     private DatabaseReference mFirebaseDatabase;
-    public ObservableField<User> users = new ObservableField<>();
+    private String userId;
+    public ObservableField<String> firstname = new ObservableField<>("");
+    public ObservableField<String> lastname = new ObservableField<>("");
+    public ObservableField<String> email = new ObservableField<>("");
+    public ObservableField<String> imageUrl = new ObservableField<>("");
+    public ObservableField<String> address = new ObservableField<>("test");
 
     private ValueEventListener valueFromGoogle = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             Map map = (Map) dataSnapshot.getValue();
-            User user = new User();
-            user.firstname = (String) map.get("firstname");
-            user.lastname = (String) map.get("lastname");
-            user.email = (String) map.get("email");
-            user.imageUrl = (String) map.get("imageUrl");
-            users.set(user);
+            firstname.set((String) map.get("firstname"));
+            lastname.set((String) map.get("lastname"));
+            email.set((String) map.get("email"));
+            imageUrl.set((String) map.get("imageUrl"));
+            address.set((String) map.get("address"));
         }
 
         @Override
@@ -38,11 +41,14 @@ public class ProfileViewModel extends ViewModel {
     };
 
     public void save(){
-
-        Log.e("Profile ViewModel", users.get().getFirstname());
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+//        User user = new User(firstname.get(),lastname.get(),email.get(),imageUrl.get(),address.get());
+        Log.e("TEST_LOG","sadsdas");
+        mFirebaseDatabase.child("users").child(userId).setValue(address.get());
     }
 
     public void getInformationWithFirebase(String userId){
+        this.userId = userId;
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseDatabase.child("users").child(userId).addValueEventListener(valueFromGoogle);
     }
