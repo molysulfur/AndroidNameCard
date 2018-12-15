@@ -10,4 +10,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="EditTextProfile">
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">@dimen/dim_16dp</item>
+    </style>
 </resources>
