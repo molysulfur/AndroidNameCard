@@ -104,9 +104,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void setImageUrl() {
         try{
-            Glide.with(this)
-                    .load(profileViewModel.imageUrl.get())
-                    .into((ImageView) findViewById(R.id.img_profile));
+            if (!profileViewModel.imageUrl.get().equals("")) {
+                Glide.with(this)
+                        .load(profileViewModel.imageUrl.get())
+                        .into((ImageView) findViewById(R.id.img_profile));
+            }
         }catch (NullPointerException e){
             Log.e("Set Image Profile", "You don't set profile in google");
         }

@@ -18,11 +18,7 @@ public class User {
     public String address;
 
     public User() {
-        firstname = "";
-        lastname = "";
-        email = "";
-        imageUrl = null;
-        address ="";
+        //
     }
 
     public User(String firstname, String lastname, String email, String imageUrl , String address) {
