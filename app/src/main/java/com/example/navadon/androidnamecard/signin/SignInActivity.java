@@ -31,6 +31,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.databinding.DataBindingUtil;
+import com.example.navadon.androidnamecard.databinding.ActivitySignInBinding;
+
 public class SignInActivity extends AppCompatActivity implements
         View.OnClickListener {
 
@@ -42,13 +45,16 @@ public class SignInActivity extends AppCompatActivity implements
 
     private DatabaseReference mFirebaseDatabase;
 
+    private SignInViewModel viewModel;
+    ActivitySignInBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
         // Button listeners
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        // findViewById(R.id.sign_in_button).setOnClickListener(this);
         // findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         // Configure Google Sign In
@@ -72,6 +78,17 @@ public class SignInActivity extends AppCompatActivity implements
         // signInButton.setSize(SignInButton.SIZE_STANDARD);
         // signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
         // [END customize_button]
+        initView();
+    }
+
+    private void initView(){
+        viewModel = new SignInViewModel();
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
+        binding.setViewmodel(viewModel);
+
+        binding.imageView.setOnClickListener(this);
+
     }
 
     @Override
@@ -219,7 +236,7 @@ public class SignInActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.sign_in_button:
+            case R.id.imageView:
                 signIn();
                 break;
             // case R.id.sign_out_button:
