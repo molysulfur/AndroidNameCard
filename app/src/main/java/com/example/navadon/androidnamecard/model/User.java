@@ -11,11 +11,11 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class User {
 
-    public String firstname;
-    public String lastname;
-    public String email;
-    public String imageUrl;
-    public String address;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String imageUrl;
+    private String address;
 
     public User() {
         //
