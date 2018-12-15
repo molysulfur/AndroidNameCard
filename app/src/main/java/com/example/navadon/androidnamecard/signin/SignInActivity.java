@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.navadon.androidnamecard.R;
 
 import com.example.navadon.androidnamecard.model.User;
+import com.example.navadon.androidnamecard.mycard.MyCardActivity;
 import com.example.navadon.androidnamecard.profile.ProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -201,8 +202,7 @@ public class SignInActivity extends AppCompatActivity implements
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
 
-                        Intent intent = new Intent(SignInActivity.this,ProfileActivity.class);
-                        Log.e("Sign in",userId);
+                        Intent intent = new Intent(SignInActivity.this,MyCardActivity.class);
                         intent.putExtra("userId",userId);
                         startActivity(intent);
                         finish();
@@ -219,6 +219,10 @@ public class SignInActivity extends AppCompatActivity implements
 
                         writeNewUser(userId,firstname,lastname,email);
 
+                        Intent intent = new Intent(SignInActivity.this,ProfileActivity.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+                        finish();
 
                     }
             }

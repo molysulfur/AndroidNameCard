@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.navadon.androidnamecard.R;
 import com.example.navadon.androidnamecard.databinding.ActivityProfileBinding;
+import com.example.navadon.androidnamecard.mycard.MyCardActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private ProfileViewModel profileViewModel;
@@ -26,6 +27,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void save(View view){
         profileViewModel.save();
+
+        Intent intent = new Intent(ProfileActivity.this,MyCardActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void initInstances() {
