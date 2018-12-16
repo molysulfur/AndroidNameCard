@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar_mycard"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/colorPrimary"
+                        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+                    <FrameLayout
+                        android:id="@+id/frame_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="start"
+                    android:background="#ffffff"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:gravity="center"
+                        android:padding="@dimen/dim_8dp"
+                        android:textSize="@dimen/dim_16sp"
+                        android:text="@string/string_navigator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:id="@+id/view_navigator"
+                        android:background="@color/colorPrimary"
+                        android:layout_margin="@dimen/dim_8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dim_1dp" />
+                    <Button
+                        android:id="@+id/btn_mycard"
+                        android:text="@string/string_mycard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/btn_listcard"
+                        android:text="@string/string_listcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

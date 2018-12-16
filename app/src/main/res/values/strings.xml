@@ -8,4 +8,10 @@
     <string name="hint_lastname">Last Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_address">Address</string>
+    <string name="btn_edit">Edit</string>
+    <string name="string_openmenu">Open Menu</string>
+    <string name="string_closemenu">Close Menu</string>
+    <string name="string_navigator">Navigatior</string>
+    <string name="string_mycard">My Card</string>
+    <string name="string_listcard">List Card</string>
 </resources>
