@@ -8,4 +8,5 @@
     <string name="hint_lastname">Last Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_address">Address</string>
+    <string name="btn_edit">Edit</string>
 </resources>

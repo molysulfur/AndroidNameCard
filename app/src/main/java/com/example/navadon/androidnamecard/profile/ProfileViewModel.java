@@ -24,7 +24,7 @@ public class ProfileViewModel extends ViewModel {
     public ObservableField<String> lastname = new ObservableField<>("");
     public ObservableField<String> email = new ObservableField<>("");
     public ObservableField<String> imageUrl = new ObservableField<>("");
-    public ObservableField<String> address = new ObservableField<>("test");
+    public ObservableField<String> address = new ObservableField<>("");
 
     private ValueEventListener valueFromGoogle = new ValueEventListener() {
         @Override
