@@ -5,14 +5,27 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.navadon.androidnamecard.R;
+import com.example.navadon.androidnamecard.adapter.RecyclerViewAdapter;
 import com.example.navadon.androidnamecard.databinding.FragmentListcardBinding;
+import com.example.navadon.androidnamecard.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListCardFragment extends Fragment {
+    private DatabaseReference mFirebaseDatabase;
     private MyCardViewModel myCardViewModel = new MyCardViewModel();
     private String userId;
     FragmentListcardBinding fragmentListcardBinding;
@@ -51,6 +64,31 @@ public class ListCardFragment extends Fragment {
     }
 
     private void initInstances() {
-        myCardViewModel.getListInformationWithFirebase(userId);
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirebaseDatabase.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList users = new ArrayList();
+                for (DataSnapshot dataSnap : dataSnapshot.getChildren()){
+                    User user = new User(dataSnap.getValue(User.class).firstname,
+                            dataSnap.getValue(User.class).lastname,
+                            dataSnap.getValue(User.class).email,
+                            dataSnap.getValue(User.class).imageUrl,
+                            dataSnap.getValue(User.class).address);
+                    users.add(user);
+                }
+                Log.e("userList",users.toString());
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),users);
+                fragmentListcardBinding.recyclerListcard.setLayoutManager(new LinearLayoutManager(getContext()));
+                fragmentListcardBinding.recyclerListcard.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+     ;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.navadon.androidnamecard.mycard;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

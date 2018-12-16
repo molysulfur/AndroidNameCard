@@ -1,0 +1,26 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_firstname"
+        android:textColor="#ffee1789" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0071ff"
+        android:id="@+id/et_lastname" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0071ff"
+        android:id="@+id/et_email" />
+    
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0071ff"
+        android:id="@+id/et_address" />
+</android.support.constraint.ConstraintLayout>
