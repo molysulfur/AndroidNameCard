@@ -3,6 +3,7 @@ package com.example.navadon.androidnamecard.mycard;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,5 +41,24 @@ public class MyCardViewModel extends ViewModel {
     public void getInformationWithFirebase(String userId){
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseDatabase.child("users").child(userId).addValueEventListener(valueFromGoogle);
+    }
+
+    public void getListInformationWithFirebase(String userId){
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirebaseDatabase.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnap : dataSnapshot.getChildren()){
+                    Log.e("listSnap", dataSnap.getValue().toString());
+                    Log.e("listSnap", "finish");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
