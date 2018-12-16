@@ -42,6 +42,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$GlideVersion"
     implementation "de.hdodenhof:circleimageview:$CircleImageVersion"
     implementation "com.android.support:recyclerview-v7:$AppcompatVersion"
+    implementation "com.android.support:cardview-v7:$AppcompatVersion"
 }
 
 apply plugin: 'com.google.gms.google-services'

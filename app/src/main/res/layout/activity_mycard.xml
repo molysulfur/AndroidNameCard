@@ -12,6 +12,7 @@
                     <android.support.v7.widget.Toolbar
                         android:id="@+id/toolbar_mycard"
                         android:layout_width="match_parent"
+                        app:titleTextColor="@color/colorWhite"
                         android:layout_height="?attr/actionBarSize"
                         android:background="@color/colorPrimary"
                         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
@@ -30,7 +31,7 @@
                     <TextView
                         android:gravity="center"
                         android:padding="@dimen/dim_8dp"
-                        android:textSize="@dimen/dim_16sp"
+                        style="@style/TextProfile"
                         android:text="@string/string_navigator"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

@@ -10,69 +10,84 @@
             name="viewModel"
             type="com.example.navadon.androidnamecard.mycard.MyCardViewModel" />
     </data>
-
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_mycard"
+        android:layout_margin="@dimen/dim_16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_profile"
-            android:layout_width="@dimen/dim_96dp"
-            android:layout_height="@dimen/dim_96dp"
-            android:layout_margin="@dimen/dim_32dp"
-            android:src="@drawable/ic_account_circle_black_24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/et_firstname"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_firstname"
-            android:text="@{viewModel.firstname}"
-            style="@style/EditTextProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/et_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_lastname"
-            android:text="@{viewModel.lastname}"
-            style="@style/EditTextProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_firstname" />
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_edit"
+                android:padding="@dimen/dim_16dp"
+                android:layout_margin="@dimen/dim_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_email"
-            android:text="@{viewModel.email}"
-            style="@style/EditTextProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_lastname" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile"
+                android:layout_width="@dimen/dim_96dp"
+                android:layout_height="@dimen/dim_96dp"
+                android:layout_margin="@dimen/dim_32dp"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:src="@drawable/cmu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
-        <TextView
-            android:id="@+id/et_address"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_address"
-            android:text="@{viewModel.address}"
-            style="@style/EditTextProfile"
-            android:minLines="5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            <TextView
+                android:id="@+id/et_firstname"
+                style="@style/TextProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_firstname"
+                android:text="@{viewModel.firstname}"
+                app:layout_constraintEnd_toEndOf="@+id/img_profile"
+                app:layout_constraintStart_toStartOf="@+id/img_profile"
+                app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+            <TextView
+                android:id="@+id/et_lastname"
+                style="@style/TextProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_lastname"
+                android:text="@{viewModel.lastname}"
+                app:layout_constraintEnd_toEndOf="@+id/et_firstname"
+                app:layout_constraintStart_toStartOf="@+id/et_firstname"
+                app:layout_constraintTop_toBottomOf="@+id/et_firstname" />
+
+            <TextView
+                android:id="@+id/et_email"
+                style="@style/TextProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:text="@{viewModel.email}"
+                app:layout_constraintEnd_toEndOf="@+id/et_lastname"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/et_lastname"
+                app:layout_constraintTop_toBottomOf="@+id/et_lastname" />
+
+            <TextView
+                android:id="@+id/et_address"
+                style="@style/TextProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/hint_address"
+                android:minLines="5"
+                android:text="@{viewModel.address}"
+                app:layout_constraintEnd_toEndOf="@+id/et_email"
+                app:layout_constraintStart_toStartOf="@+id/et_email"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
 
-    </android.support.constraint.ConstraintLayout>
-
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </layout>

@@ -70,14 +70,10 @@ public class ListCardFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList users = new ArrayList();
                 for (DataSnapshot dataSnap : dataSnapshot.getChildren()){
-                    User user = new User(dataSnap.getValue(User.class).firstname,
-                            dataSnap.getValue(User.class).lastname,
-                            dataSnap.getValue(User.class).email,
-                            dataSnap.getValue(User.class).imageUrl,
-                            dataSnap.getValue(User.class).address);
+                    Log.e("lastname",dataSnap.getValue(User.class).lastname);
+                    User user = dataSnap.getValue(User.class);
                     users.add(user);
                 }
-                Log.e("userList",users.toString());
                 RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),users);
                 fragmentListcardBinding.recyclerListcard.setLayoutManager(new LinearLayoutManager(getContext()));
                 fragmentListcardBinding.recyclerListcard.setAdapter(adapter);

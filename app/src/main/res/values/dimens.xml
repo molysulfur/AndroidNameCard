@@ -6,4 +6,6 @@
     <dimen name="dim_1dp">1dp</dimen>
     <dimen name="dim_8dp">8dp</dimen>
     <dimen name="dim_16sp">16sp</dimen>
+    <dimen name="dim_200dp">200dp</dimen>
+    <dimen name="dim_0dp">0dp</dimen>
 </resources>

@@ -14,4 +14,11 @@
         <item name="android:textAlignment">center</item>
         <item name="android:layout_margin">@dimen/dim_16dp</item>
     </style>
+
+    <style name="TextProfile">
+        <item name="android:textSize">@dimen/dim_16sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">@dimen/dim_16dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
 </resources>
