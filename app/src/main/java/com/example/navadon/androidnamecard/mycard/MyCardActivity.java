@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +63,7 @@ public class MyCardActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_activity,MyCardFragment.newInstance(getIntent().getStringExtra("userId")))
                         .commit();
+                drawerLayout.closeDrawer(Gravity.LEFT);
             }
         });
 
@@ -71,6 +73,7 @@ public class MyCardActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_activity,ListCardFragment.newInstance(getIntent().getStringExtra("userId")))
                         .commit();
+                drawerLayout.closeDrawer(Gravity.LEFT);
             }
         });
     }
