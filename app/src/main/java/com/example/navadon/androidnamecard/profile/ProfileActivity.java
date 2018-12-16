@@ -26,11 +26,11 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void save(View view){
-        profileViewModel.save();
-
-        Intent intent = new Intent(ProfileActivity.this,MyCardActivity.class);
-        startActivity(intent);
-        finish();
+            String userId = profileViewModel.save();
+            Intent intent = new Intent(ProfileActivity.this, MyCardActivity.class);
+            intent.putExtra("userId",userId);
+            startActivity(intent);
+            finish();
     }
 
     private void initInstances() {

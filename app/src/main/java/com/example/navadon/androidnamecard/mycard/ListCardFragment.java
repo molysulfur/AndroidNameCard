@@ -89,6 +89,5 @@ public class ListCardFragment extends Fragment {
 
             }
         });
-     ;
     }
 }

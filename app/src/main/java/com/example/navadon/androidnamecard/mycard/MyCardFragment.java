@@ -1,5 +1,6 @@
 package com.example.navadon.androidnamecard.mycard;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.navadon.androidnamecard.R;
 import com.example.navadon.androidnamecard.databinding.FragmentMycardBinding;
+import com.example.navadon.androidnamecard.profile.ProfileActivity;
 
 public class MyCardFragment extends Fragment {
 
@@ -50,6 +52,16 @@ public class MyCardFragment extends Fragment {
     }
 
     private void initInstances() {
+
         myCardViewModel.getInformationWithFirebase(userId);
+        fragmentMycardBinding.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
     }
 }

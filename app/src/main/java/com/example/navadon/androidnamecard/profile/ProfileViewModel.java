@@ -43,18 +43,21 @@ public class ProfileViewModel extends ViewModel {
         }
     };
 
-    public void save(){
-        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
-        User user = new User(firstname.get(),lastname.get(),email.get(),imageUrl.get(),address.get());
-        Log.e("TEST_LOG","sadsdas");
-        String key = mFirebaseDatabase.child("users").child(userId).getKey();
-        Map<String, Object> postValues = user.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/users/" + key, postValues);
+    public String save(){
+        try {
+            mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+            User user = new User(firstname.get(),lastname.get(),email.get(),imageUrl.get(),address.get());
+            Log.e("TEST_LOG","sadsdas");
+            String key = mFirebaseDatabase.child("users").child(userId).getKey();
+            Map<String, Object> postValues = user.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/users/" + key, postValues);
 
-        mFirebaseDatabase.updateChildren(childUpdates);
-
-//        mFirebaseDatabase.child("users").child(userId).setValue(address);
+            mFirebaseDatabase.updateChildren(childUpdates);
+        }catch (Exception e){
+            Log.e("error", e.toString());
+        }
+        return userId;
     }
 
     public void getInformationWithFirebase(String userId){
