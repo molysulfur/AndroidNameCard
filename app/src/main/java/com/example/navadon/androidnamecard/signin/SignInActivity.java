@@ -3,21 +3,21 @@ package com.example.navadon.androidnamecard.signin;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.navadon.androidnamecard.R;
 
+import com.example.navadon.androidnamecard.model.User;
+import com.example.navadon.androidnamecard.mycard.MyCardActivity;
+import com.example.navadon.androidnamecard.profile.ProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.databinding.DataBindingUtil;
+import com.example.navadon.androidnamecard.databinding.ActivitySignInBinding;
+
 public class SignInActivity extends AppCompatActivity implements
         View.OnClickListener {
 
@@ -43,13 +46,16 @@ public class SignInActivity extends AppCompatActivity implements
 
     private DatabaseReference mFirebaseDatabase;
 
+    private SignInViewModel viewModel;
+    ActivitySignInBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
         // Button listeners
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        // findViewById(R.id.sign_in_button).setOnClickListener(this);
         // findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         // Configure Google Sign In
@@ -73,6 +79,17 @@ public class SignInActivity extends AppCompatActivity implements
         // signInButton.setSize(SignInButton.SIZE_STANDARD);
         // signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
         // [END customize_button]
+        initView();
+    }
+
+    private void initView(){
+        viewModel = new SignInViewModel();
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
+        binding.setViewmodel(viewModel);
+
+        binding.imageView.setOnClickListener(this);
+
     }
 
     @Override
@@ -184,6 +201,11 @@ public class SignInActivity extends AppCompatActivity implements
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        Intent intent = new Intent(SignInActivity.this,MyCardActivity.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+                        finish();
                     }else{
                         // TODO 3. if userId exist in database - move to add information activity
                         // this method use to write new user to database in Firebase
@@ -196,6 +218,12 @@ public class SignInActivity extends AppCompatActivity implements
                         toast.show();
 
                         writeNewUser(userId,firstname,lastname,email);
+
+                        Intent intent = new Intent(SignInActivity.this,ProfileActivity.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+                        finish();
+
                     }
             }
 
@@ -212,7 +240,7 @@ public class SignInActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.sign_in_button:
+            case R.id.imageView:
                 signIn();
                 break;
             // case R.id.sign_out_button:
