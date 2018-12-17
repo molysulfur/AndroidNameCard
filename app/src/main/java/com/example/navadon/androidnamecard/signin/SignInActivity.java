@@ -132,7 +132,7 @@ public class SignInActivity extends AppCompatActivity implements
                             FirebaseUser user = mFirebaseClient.getCurrentUser();
                             updateUI(user);
                             // TODO 1. Mos should read method to use in other activity
-                            manageRoute(user.getUid(),account.getGivenName(),account.getFamilyName(),account.getEmail());
+                            manageRoute(user.getUid(),account.getGivenName(),account.getFamilyName(),account.getEmail(),account.getPhotoUrl().toString());
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -177,17 +177,17 @@ public class SignInActivity extends AppCompatActivity implements
         toast.show();
     }
 
-    private void writeNewUser(String userId, String firstname, String lastname, String email) {
+    private void writeNewUser(String userId, String firstname, String lastname, String email,String photo) {
         User user = new User();
 
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
-        user.setEmail(email);
-
+        user.firstname = firstname;
+        user.lastname = lastname;
+        user.email = email;
+        user.imageUrl = photo;
         mFirebaseDatabase.child("users").child(userId).setValue(user);
     }
 
-    private void manageRoute(final String userId, final String firstname, final String lastname, final String email){
+    private void manageRoute(final String userId, final String firstname, final String lastname, final String email,final String photo){
         mFirebaseDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -217,7 +217,7 @@ public class SignInActivity extends AppCompatActivity implements
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
 
-                        writeNewUser(userId,firstname,lastname,email);
+                        writeNewUser(userId,firstname,lastname,email,photo);
 
                         Intent intent = new Intent(SignInActivity.this,ProfileActivity.class);
                         intent.putExtra("userId",userId);

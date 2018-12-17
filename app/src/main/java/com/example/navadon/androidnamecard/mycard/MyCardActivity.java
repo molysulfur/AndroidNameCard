@@ -39,6 +39,7 @@ public class MyCardActivity extends AppCompatActivity {
                 drawerLayout,
                 R.string.string_openmenu,
                 R.string.string_closemenu);
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorWhite));
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

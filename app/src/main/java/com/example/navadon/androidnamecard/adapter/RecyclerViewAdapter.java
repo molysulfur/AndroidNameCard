@@ -42,12 +42,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ListCardViewHolder
         listCardViewHolder.mLastname.setText(user.lastname);
         listCardViewHolder.mEmail.setText(user.email);
         listCardViewHolder.mAddress.setText(user.address);
-        try {
-            if (!user.imageUrl.equals(""))
-                Glide.with(mContext).load(user.imageUrl).into(listCardViewHolder.circleImageView);
-        }catch (NullPointerException e){
-
-        }
+//        try {
+//            if (!user.imageUrl.equals(""))
+//                Glide.with(mContext).load(user.imageUrl).into(listCardViewHolder.circleImageView);
+//        }catch (NullPointerException e){
+//
+//        }
 
     }
 

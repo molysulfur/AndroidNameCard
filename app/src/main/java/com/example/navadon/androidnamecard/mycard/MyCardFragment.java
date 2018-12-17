@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.navadon.androidnamecard.R;
 import com.example.navadon.androidnamecard.databinding.FragmentMycardBinding;
 import com.example.navadon.androidnamecard.profile.ProfileActivity;
@@ -54,6 +56,7 @@ public class MyCardFragment extends Fragment {
 
     private void initInstances() {
         myCardViewModel.getInformationWithFirebase(userId);
+
         fragmentMycardBinding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -27,7 +27,11 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void save(View view){
-        profileViewModel.save();
+        try {
+            profileViewModel.save();
+        }catch (NullPointerException e){
+
+        }
         Intent intent = new Intent(ProfileActivity.this,MyCardActivity.class);
         intent.putExtra("userId",userId);
         startActivity(intent);
