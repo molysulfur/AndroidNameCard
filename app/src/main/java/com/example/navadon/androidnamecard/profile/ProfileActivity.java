@@ -18,6 +18,7 @@ import com.example.navadon.androidnamecard.mycard.MyCardActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private ProfileViewModel profileViewModel;
+    private String userId;
     ActivityProfileBinding profileBinding;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,8 +28,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void save(View view){
         profileViewModel.save();
-
         Intent intent = new Intent(ProfileActivity.this,MyCardActivity.class);
+        intent.putExtra("userId",userId);
         startActivity(intent);
         finish();
     }
@@ -37,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileViewModel = new ProfileViewModel();
         profileBinding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
         profileBinding.setViewModel(profileViewModel);
-        String userId = getIntent().getStringExtra("userId");
+        userId = getIntent().getStringExtra("userId");
 
         profileViewModel.getInformationWithFirebase(userId);
         setTextWatcher();

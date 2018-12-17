@@ -20,7 +20,7 @@
                 android:layout_width="@dimen/dim_96dp"
                 android:layout_height="@dimen/dim_96dp"
                 android:layout_margin="@dimen/dim_32dp"
-                android:src="@drawable/ic_account_circle_black_24dp"
+                android:src="@drawable/cmu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
